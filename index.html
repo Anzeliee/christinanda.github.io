@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AR Komputer 3D - Christinanda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- A-Frame dan MindAR -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+
+  <body>
+    <!-- Scene utama MindAR -->
+    <a-scene 
+      mindar-image="imageTargetSrc: ./targetsKomputer.mind;" 
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights" 
+      vr-mode-ui="enabled: false" 
+      device-orientation-permission-ui="enabled: false">
+
+      <!-- Asset model -->
+      <a-assets>
+        <a-asset-item id="KomputerModel" src="./Komputer.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- Kamera -->
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- Objek 3D muncul di atas marker -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model 
+          src="#KomputerModel" 
+          position="0 0 0" 
+          rotation="0 0 0" 
+          scale="0.5 0.5 0.5">
+        </a-gltf-model>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
